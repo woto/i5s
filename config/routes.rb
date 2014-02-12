@@ -1,12 +1,22 @@
 I5s::Application.routes.draw do
 
-  root 'welcome#index'
+  class PageConstraint
+    def matches?(request)
+      path = request.original_fullpath.clone
+      path[0] = ''
+      @page = Page.where(:path => CGI::unescape(path))
+      @page.present?
+    end
+  end
 
   namespace :admin do
     resources :pages
+    resources :uploads
   end
 
-  resources :pages
+  #resources :pages
+
+  get "*path" => "pages#show", :constraints => PageConstraint.new, format: false
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

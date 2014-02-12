@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+     models:
+       page: Страница
+  helpers:
+     submit:
+       page:
+         create: "Создать %{model}"
+         update: "Изменить %{model}"
+  attributes:
+    path: Путь
+    title: Заголовок
+    content: Содержание

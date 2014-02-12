@@ -4,9 +4,9 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Path</th>
-        <th>Title</th>
-        <th>Content</th>
+        <th><%= Page.human_attribute_name(:path) %></th>
+        <th><%= Page.human_attribute_name(:title) %></th>
+        <th><%= Page.human_attribute_name(:content) %></th>
         <th></th>
         <th></th>
         <th></th>
@@ -19,9 +19,10 @@
           <td><%= page.path %></td>
           <td><%= page.title %></td>
           <td><%= truncate(strip_tags(page.content), length: 120) %></td>
-          <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, page, class: "btn btn-default", target: "_blank" %></td>
-          <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_page_path(page), class: "btn btn-warning" %></td>
-          <td><%= link_to '<i class="fa fa-times"></i>'.html_safe, page, method: :delete, data: { confirm: 'Уверены что хотите удалить страницу?' }, class: "btn btn-danger" %></td>
+          <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, "/#{page.path}", class: "btn btn-default", target: "_blank" %></td>
+          <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, admin_page_path(page), class: "btn btn-default" %></td>
+          <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_admin_page_path(page), class: "btn btn-warning" %></td>
+          <td><%= link_to '<i class="fa fa-times"></i>'.html_safe, admin_page_path(page), method: :delete, data: { confirm: 'Уверены что хотите удалить страницу?' }, class: "btn btn-danger" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -30,7 +31,7 @@
 
 <br>
 
-<%= link_to 'Создать новую', new_admin_page_path, class: "btn btn-lg btn-primary" %>
+<%= link_to 'Новая страница', new_admin_page_path, class: "btn btn-lg btn-primary" %>
 
 <br>
 <br>

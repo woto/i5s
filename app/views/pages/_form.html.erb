@@ -2,7 +2,7 @@
 
   <div class="col-lg-12">
     
-    <%= form_for(@page, html: { class: 'form-horizontal' }) do |f| %>
+    <%= form_for @page, url: [:admin, @page], html: { class: 'form-horizontal' } do |f| %>
 
       <% if @page.errors.any? %>
         <div id="error_explanation">
@@ -40,7 +40,7 @@
         <div class="col-sm-12">
           <%= f.submit nil, class: "btn btn-lg btn-primary"  %>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <%= link_to 'К списку', pages_path %>
+          <%= link_to 'К списку', admin_pages_path %>
         </div>
       </div>
 
