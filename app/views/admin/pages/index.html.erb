@@ -1,7 +1,7 @@
 <h1 class="page-header">Страницы</h1>
 
 <div class="table-responsive">
-  <table class="table">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th><%= Page.human_attribute_name(:path) %></th>
@@ -19,7 +19,6 @@
           <td><%= page.path %></td>
           <td><%= page.title %></td>
           <td><%= truncate(strip_tags(page.content), length: 120) %></td>
-          <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, "/#{page.path}", class: "btn btn-default", target: "_blank" %></td>
           <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, admin_page_path(page), class: "btn btn-default" %></td>
           <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_admin_page_path(page), class: "btn btn-warning" %></td>
           <td><%= link_to '<i class="fa fa-times"></i>'.html_safe, admin_page_path(page), method: :delete, data: { confirm: 'Уверены что хотите удалить страницу?' }, class: "btn btn-danger" %></td>

@@ -5,8 +5,9 @@
     <%= form_for @page, url: [:admin, @page], html: { class: 'form-horizontal' } do |f| %>
 
       <% if @page.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4><%= pluralize(@page.errors.count, "error") %> </h4>
 
           <ul>
           <% @page.errors.full_messages.each do |msg| %>

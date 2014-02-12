@@ -4,6 +4,7 @@ I5s::Application.routes.draw do
     def matches?(request)
       path = request.original_fullpath.clone
       path[0] = ''
+      puts CGI::unescape(path)
       @page = Page.where(:path => CGI::unescape(path))
       @page.present?
     end
@@ -17,6 +18,8 @@ I5s::Application.routes.draw do
   #resources :pages
 
   get "*path" => "pages#show", :constraints => PageConstraint.new, format: false
+
+  root :to => "pages#show"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,28 @@
+<h1 class="page-header">Просмотр страницы</h1>
+
+<% if notice %>
+  <div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= notice %>
+  </div>
+<% end %>
+
+<h3>
+  <%= link_to "/#{@page.path}", target: "_blank" do %>
+    <%= root_url + @page.path %>
+  <% end %>
+</h3>
+
+<h3>
+  <%= @page.title %>
+</h3>
+
+<%== @page.content %>
+
+<br />
+<br />
+
+<%= link_to '<i class="fa fa-plus"></i> Новая страница'.html_safe, new_admin_page_path(@page), class: "btn btn-primary" %>
+<%= link_to '<i class="fa fa-edit"></i> Редактировать'.html_safe, edit_admin_page_path(@page), class: "btn btn-warning" %>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to 'К списку', admin_pages_path %>
