@@ -1,31 +1,36 @@
-<h1>Listing pages</h1>
+<h1 class="page-header">Страницы</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pages.each do |page| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= page.path %></td>
-        <td><%= page.title %></td>
-        <td><%= page.content %></td>
-        <td><%= link_to 'Show', page %></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Path</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @pages.each do |page| %>
+        <tr>
+          <td><%= page.path %></td>
+          <td><%= page.title %></td>
+          <td><%= truncate(strip_tags(page.content), length: 120) %></td>
+          <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, page, class: "btn btn-default", target: "_blank" %></td>
+          <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_page_path(page), class: "btn btn-warning" %></td>
+          <td><%= link_to '<i class="fa fa-times"></i>'.html_safe, page, method: :delete, data: { confirm: 'Уверены что хотите удалить страницу?' }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New Page', new_page_path %>
+<%= link_to 'Создать новую', new_admin_page_path, class: "btn btn-lg btn-primary" %>
+
+<br>
+<br>

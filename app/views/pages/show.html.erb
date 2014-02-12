@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1 class="page-header">Просмотр страницы</h1>
+
 <p>
   <strong>Path:</strong>
   <%= @page.path %>
@@ -12,8 +14,10 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @page.content %>
+  <%== @page.content %>
 </p>
 
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to '<i class="fa fa-plus"></i> Создать новую'.html_safe, new_admin_page_path(@page), class: "btn btn-primary" %>
+<%= link_to '<i class="fa fa-edit"></i> Редактировать'.html_safe, edit_admin_page_path(@page), class: "btn btn-warning" %>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to 'К списку', pages_path %>
